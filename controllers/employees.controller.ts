@@ -27,9 +27,9 @@ export const createEmployee: HandlerFunc = async (c: Context) => {
       age,
     };
 
-    const id = await employees.insertOne(newEmployee);
+    const { $oid } = await employees.insertOne(newEmployee);
 
-    newEmployee.id = id.$oid;
+    newEmployee.id = $oid;
 
     return c.json(newEmployee, 201);
   } catch (error) {

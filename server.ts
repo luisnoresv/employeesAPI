@@ -14,12 +14,14 @@ const app = new Application();
 
 app.use(ErrorMiddleware);
 
+const port = Deno.env.get('PORT') || 5000;
+
 app
-  .get('/employees', fetchAllEmployees)
-  .post('/employees', createEmployee)
-  .get('/employees/:id', fetchOneEmployee)
-  .put('/employees/:id', updateEmployee)
-  .delete('/employees/:id', deleteEmployee)
-  .start({ port: 5000 });
+  .get('/api/v1/employees', fetchAllEmployees)
+  .post('/api/v1/employees', createEmployee)
+  .get('/api/v1/employees/:id', fetchOneEmployee)
+  .put('/api/v1/employees/:id', updateEmployee)
+  .delete('/api/v1/employees/:id', deleteEmployee)
+  .start({ port: +port });
 
 console.log(SERVER_LISTENING);
