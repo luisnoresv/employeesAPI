@@ -24,4 +24,4 @@ app
   .delete('/api/v1/employees/:id', deleteEmployee)
   .start({ port: +port });
 
-console.log(SERVER_LISTENING);
+console.log(`Server listening on http://localhost:${port}`);
